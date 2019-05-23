@@ -13,6 +13,7 @@
     "js-yaml": "^3.12.0",
     "jsonwebtoken": "^8.4.0",
     "nodemon": "^1.18.6",
+    "raw-body": "^2.4.0",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.5",
     "swagger-ui-dist": "^3.20.1",

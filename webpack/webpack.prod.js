@@ -3,7 +3,19 @@ const entryLoader = require('./entryLoader');
 const TemplateCreatorPlugin = require('./templateCreatorPlugin');
 const userConfig = require('../config');
 
+let fs = require('fs');
+
+let nodeModules = {};
+fs.readdirSync('node_modules')
+  .filter(function(x) {
+    return ['.bin'].indexOf(x) === -1 && x !== 'tslib';
+  })
+  .forEach(function(mod) {
+    nodeModules[mod] = `commonjs ${mod}`;
+  });
+
 const config = {
+  externals: nodeModules,
   entry: entryLoader(userConfig.functionPath),
   mode: 'development',
   target: 'node',
