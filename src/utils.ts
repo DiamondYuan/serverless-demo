@@ -18,6 +18,7 @@ export interface FCResult {
 export interface FCResponse {
   setStatusCode(status: number): void;
   send(body: string | Readable | Buffer);
+  setHeader(key: string, value: string);
 }
 
 export interface FCContext {
@@ -98,6 +99,7 @@ function asyncHook(func: aliCloudAsyncFC) {
           response.setStatusCode(result.statusCode);
         }
         response.setStatusCode(200);
+        response.setHeader('content-type', 'application/json');
         response.send(result.body);
       })
       .catch((error: FCError | Error) => {

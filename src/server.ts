@@ -39,6 +39,9 @@ fileList.forEach(async (file: string) => {
             queries: req.query,
           },
           {
+            setHeader: (k, v) => {
+              res.setHeader(k, v);
+            },
             setStatusCode: (code: number) => {
               res.statusCode = code;
             },
