@@ -15,7 +15,6 @@ export const codeGenerate = async (request: FCRequest, _context: FCContext) => {
     instancename: instanceName,
   });
   const { content } = JSON.parse(await getRawBody(request, 'utf-8'));
-
   if (!content) {
     throw new FCError('wcontent', 400);
   }
